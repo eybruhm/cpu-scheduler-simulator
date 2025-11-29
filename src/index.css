@@ -1,0 +1,13 @@
+:root {
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1,h2,h3 { margin: 0; }
+
+button { cursor: pointer; }

@@ -1,0 +1,126 @@
+// Custom Bootstrap theme for CPU Scheduler Simulator
+// Bold Yellow & Black aesthetic + animations
+
+// Override Bootstrap variables
+$primary: #ffd200; // Vibrant yellow
+$secondary: #0b0b0b; // Deep black
+$warning: #ffca2c;
+$light: #fff8d6;
+$dark: #000000;
+
+// Typography
+$font-family-base: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$headings-font-weight: 800;
+$headings-color: #0b0b0b;
+$body-bg: #ffd200; // Yellow background site-wide
+$body-color: #0b0b0b;
+
+// Ensure body is visible
+body {
+  min-height: 100vh;
+}
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Utility: gradients
+.bg-yellow-gradient {
+	background: linear-gradient(135deg, #fff1a8 0%, #ffd200 40%, #ffb300 100%);
+}
+
+.text-shadow {
+	text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+// Page framing
+body {
+	background-color: $body-bg;
+}
+
+// Subtle diagonal stripes with parallax feel
+.app-background {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	background-image:
+		repeating-linear-gradient(135deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 8px, transparent 8px, transparent 22px),
+		radial-gradient(1200px 400px at 10% 0%, #ffe169 0%, #ffd200 50%, #ffb300 100%);
+	background-attachment: fixed;
+	filter: saturate(1.1);
+}
+
+// Custom navbar: glossy black with glow hover
+.navbar-hero {
+	background: radial-gradient(1200px 400px at 10% 0%, #1a1a1a 0%, #000 60%);
+	border-bottom: 3px solid #ffb300;
+}
+.navbar-hero .nav-link {
+	font-weight: 600;
+	color: #ffd200 !important;
+	position: relative;
+}
+.navbar-hero .nav-link::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	width: 0;
+	height: 3px;
+	background: linear-gradient(90deg, #ffd200, #ff8c00);
+	transition: width 250ms ease;
+}
+.navbar-hero .nav-link:hover::after { width: 100%; }
+
+.brand-badge {
+	color: #0b0b0b;
+	background: linear-gradient(135deg, #ffd200, #ffb300);
+	padding: 8px 14px;
+	border-radius: 999px;
+	font-weight: 800;
+}
+
+// Landing hero card
+.hero-card {
+	background: linear-gradient(135deg, #fff3bf 0%, #ffd200 50%, #ffb300 100%);
+	border: 3px solid #0b0b0b;
+}
+
+// Animated sections (scroll + render)
+@keyframes fadeUp {
+	from { opacity: 0; transform: translateY(12px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+	from { opacity: 0; transform: scale(0.96); }
+	to { opacity: 1; transform: scale(1); }
+}
+
+.anim-fade-up { animation: fadeUp 500ms ease forwards; }
+.anim-fade-scale { animation: fadeInScale 500ms ease forwards; }
+
+// Simple scroll reveal using "data-anim" attribute
+[data-anim] { opacity: 0; transform: translateY(12px); }
+.revealed { opacity: 1 !important; transform: none !important; transition: all 450ms ease; }
+
+// Cards & buttons accent
+.card.accent {
+	border: 3px solid #0b0b0b;
+	background-color: #fff8d6;
+}
+.equal-card {
+	display: flex;
+	flex-direction: column;
+}
+.equal-card .card-body {
+	flex: 1 1 auto;
+}
+.btn-cta {
+	background: linear-gradient(135deg, #ffd200, #ff8c00);
+	color: #0b0b0b;
+	border: 2px solid #0b0b0b;
+}
+.btn-cta:hover { filter: brightness(1.05); }
