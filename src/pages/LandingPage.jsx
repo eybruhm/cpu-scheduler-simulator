@@ -88,11 +88,7 @@ function LandingPage() {
                   overflow: 'hidden'
                 }}
               >
-                {/* QR image placeholder: replace `src` when ready */}
-                <img src={"/canva.png"} alt="QR Code" style={{width:'100%', height:'100%', objectFit:'cover', display: 'none'}} />
-                <div style={{width:'100%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>
-                  <span className="text-muted">QR Code Here</span>
-                </div>
+                <img src="/canva.png" alt="QR Code" style={{width:'100%', height:'100%', objectFit:'cover'}} />
               </div>
               <div>
                 <button className="btn btn-cta btn-lg px-5 py-3 fw-bold" onClick={handleStartSimulation}>
