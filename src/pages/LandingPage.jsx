@@ -42,7 +42,7 @@ function LandingPage() {
             <div className="card-body">
               <p className="mb-2"><strong>Course Title:</strong> Algorithms and Complexity</p>
               <p className="mb-2"><strong>Course Code:</strong> AL101</p>
-              <p className="mb-2"><strong>Professor:</strong> Mr. Melchor Erise</p>
+              <p className="mb-2"><strong>Course Instructor:</strong> Mr. Melchor Erise</p>
               <p className="mb-2"><strong>Week 17:</strong> Presentation of the created software used for CPU Scheduling Algorithm</p>
             </div>
           </div>
@@ -89,7 +89,7 @@ function LandingPage() {
                 }}
               >
                 {/* QR image placeholder: replace `src` when ready */}
-                <img src={null} alt="QR Code" style={{width:'100%', height:'100%', objectFit:'cover', display: 'none'}} />
+                <img src={"/canva.png"} alt="QR Code" style={{width:'100%', height:'100%', objectFit:'cover', display: 'none'}} />
                 <div style={{width:'100%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>
                   <span className="text-muted">QR Code Here</span>
                 </div>
