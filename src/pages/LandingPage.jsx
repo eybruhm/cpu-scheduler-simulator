@@ -26,7 +26,7 @@ function LandingPage() {
         <div className="col-12 col-lg-10 text-center" data-anim>
           <div className="hero-card p-5 rounded shadow-lg anim-fade-scale text-shadow">
             <h1 className="display-3 fw-bold mb-2">CPU Scheduling Simulator</h1>
-            <h2 className="h2 fw-bold mb-0">SJF vs. FIFO</h2>
+            <h2 className="h2 fw-bold mb-0">SJF vs. FCFS</h2>
           </div>
         </div>
       </div>

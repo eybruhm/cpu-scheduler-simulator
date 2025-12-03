@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { calculateSJF } from '../utils/sjf_logic'
-import { calculateFIFO } from '../utils/fifo_logic'
+import { calculateFCFS } from '../utils/fcfs_logic'
 
 function InputPage() {
   const navigate = useNavigate()
@@ -93,7 +93,7 @@ function InputPage() {
     localStorage.removeItem('inputProcesses')
     // Quick sanity call (logs only) to confirm imports
     calculateSJF(processes)
-    calculateFIFO(processes)
+    calculateFCFS(processes)
     navigate('/results')
   }
 

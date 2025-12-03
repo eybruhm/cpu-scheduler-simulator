@@ -5,7 +5,7 @@ function Header() {
     <nav className="navbar navbar-expand-lg navbar-dark navbar-hero">
       <div className="container-fluid py-2">
         <Link className="navbar-brand brand-badge" to="/">
-          SJF · FIFO
+          SJF · FCFS
         </Link>
         <button
           className="navbar-toggler"

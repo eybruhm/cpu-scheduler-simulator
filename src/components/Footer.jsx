@@ -6,7 +6,7 @@ function Footer() {
           &copy; {new Date().getFullYear()} CPU Scheduling Simulator Project
         </p>
         <p className="small mb-0">
-          Built with React & Vite | SJF vs. FIFO Comparison
+          Built with React & Vite | SJF vs. FCFS Comparison
         </p>
       </div>
     </footer>

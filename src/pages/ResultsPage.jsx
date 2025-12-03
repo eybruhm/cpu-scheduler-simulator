@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { calculateSJF } from '../utils/sjf_logic'
-import { calculateFIFO } from '../utils/fifo_logic'
+import { calculateFCFS } from '../utils/fcfs_logic'
 import MetricsTable from '../components/MetricsTable'
 import GanttChart from '../components/GanttChart'
 
 function ResultsPage() {
   const navigate = useNavigate()
   const [sjfResults, setSjfResults] = useState(null)
-  const [fifoResults, setFifoResults] = useState(null)
+  const [fcfsResults, setFcfsResults] = useState(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,19 +43,19 @@ function ResultsPage() {
       }
       
       const sjf = calculateSJF(processes)
-      const fifo = calculateFIFO(processes)
+      const fcfs = calculateFCFS(processes)
       
       console.log('SJF results:', sjf)
-      console.log('FIFO results:', fifo)
+      console.log('FCFS results:', fcfs)
       
       setSjfResults(sjf)
-      setFifoResults(fifo)
+      setFcfsResults(fcfs)
     } catch (error) {
       console.error('Error loading results:', error)
     }
   }, [navigate])
 
-  if (!sjfResults || !fifoResults) {
+  if (!sjfResults || !fcfsResults) {
     return (
       <div className="container py-5" style={{minHeight: '80vh'}}>
         <div className="row justify-content-center mb-4">
@@ -91,7 +91,7 @@ function ResultsPage() {
     )
   }
 
-  const sjfWinner = parseFloat(sjfResults.avgWT) <= parseFloat(fifoResults.avgWT)
+  const sjfWinner = parseFloat(sjfResults.avgWT) <= parseFloat(fcfsResults.avgWT)
   
   console.log('Rendering results with sjfWinner:', sjfWinner)
 
@@ -101,12 +101,12 @@ function ResultsPage() {
         <div className="col-12 col-lg-10 text-center">
           <div className="hero-card p-4 rounded shadow-lg" style={{backgroundColor: '#fff8d6', border: '3px solid #0b0b0b'}}>
             <h1 className="display-4 fw-bold mb-0" style={{color: '#0b0b0b'}}>Results</h1>
-            <p className="lead mb-0" style={{color: '#0b0b0b'}}>SJF vs. FIFO Comparison</p>
+            <p className="lead mb-0" style={{color: '#0b0b0b'}}>SJF vs. FCFS Comparison</p>
           </div>
         </div>
       </div>
 
-      {/* SJF and FIFO side by side */}
+      {/* SJF and FCFS side by side */}
       <div className="row g-4 mb-4" style={{opacity: 1, visibility: 'visible'}}>
         <div className="col-lg-6">
           <h3 className="h4 fw-bold mb-3 text-dark">SJF (Shortest Job First)</h3>
@@ -114,9 +114,9 @@ function ResultsPage() {
           <MetricsTable processes={sjfResults.processes} title="SJF Metrics" />
         </div>
         <div className="col-lg-6">
-          <h3 className="h4 fw-bold mb-3 text-dark">FIFO (First-In-First-Out)</h3>
-          <GanttChart gantt={fifoResults.gantt} title="FIFO Gantt Chart" />
-          <MetricsTable processes={fifoResults.processes} title="FIFO Metrics" />
+          <h3 className="h4 fw-bold mb-3 text-dark">FCFS (First-Come, First-Served)</h3>
+          <GanttChart gantt={fcfsResults.gantt} title="FCFS Gantt Chart" />
+          <MetricsTable processes={fcfsResults.processes} title="FCFS Metrics" />
         </div>
       </div>
 
@@ -144,15 +144,15 @@ function ResultsPage() {
                       <td>{sjfResults.avgTAT}</td>
                     </tr>
                     <tr style={{ backgroundColor: !sjfWinner ? '#ffd20044' : 'transparent' }}>
-                      <td className="fw-bold">FIFO</td>
-                      <td className={!sjfWinner ? 'fw-bold text-warning' : ''}>{fifoResults.avgWT}</td>
-                      <td>{fifoResults.avgTAT}</td>
+                      <td className="fw-bold">FCFS</td>
+                      <td className={!sjfWinner ? 'fw-bold text-warning' : ''}>{fcfsResults.avgWT}</td>
+                      <td>{fcfsResults.avgTAT}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div className="alert alert-dark mt-3 mb-0">
-                <strong>Conclusion:</strong> {sjfWinner ? 'SJF' : 'FIFO'} algorithm achieved lower average waiting time, 
+                <strong>Conclusion:</strong> {sjfWinner ? 'SJF' : 'FCFS'} algorithm achieved lower average waiting time, 
                 demonstrating more efficient CPU resource management. This optimization contributes to better system 
                 performance and energy efficiency, aligning with SDG 9: Industry, Innovation, and Infrastructure.
               </div>

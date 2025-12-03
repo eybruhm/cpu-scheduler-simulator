@@ -1,4 +1,4 @@
-export const calculateFIFO = (processes) => {
+export const calculateFCFS = (processes) => {
   // Sort by Arrival Time
   const sorted = [...processes].sort((a, b) => a.at - b.at)
   
